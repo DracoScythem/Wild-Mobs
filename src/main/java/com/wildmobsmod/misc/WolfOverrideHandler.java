@@ -14,12 +14,13 @@ public class WolfOverrideHandler
 	@SubscribeEvent(priority=EventPriority.HIGHEST)
 	public void onWolfSpawn(EntityJoinWorldEvent event)
 	{
-		if(event.entity.getClass() == EntityWolf.class && WildMobsMod.checkIsEntityNew(event.entity) && Math.random() * 100 < WildMobsMod.WOLF_CONFIG.getOverrideChance())
+		if (event.entity.getClass() == EntityWolf.class && WildMobsMod.checkIsEntityNew(event.entity) && Math.random() * 100 < WildMobsMod.WOLF_CONFIG.getOverrideChance())
 		{
 			EntityWolf wolf = (EntityWolf) event.entity;
 			EntityWMWolf newWolf = new EntityWMWolf(event.world);
 			newWolf.setPosition(wolf.posX, wolf.posY, wolf.posZ);
-			newWolf.setAngles(wolf.rotationPitch, wolf.rotationYaw);
+			newWolf.rotationPitch = wolf.rotationPitch;
+			newWolf.rotationYaw = wolf.rotationYaw;
 			newWolf.setGrowingAge(wolf.getGrowingAge());
 			wolf.setDead();
 			event.setCanceled(true);
