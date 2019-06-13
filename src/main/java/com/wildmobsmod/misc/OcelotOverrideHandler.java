@@ -19,7 +19,8 @@ public class OcelotOverrideHandler
 			EntityOcelot ocelot = (EntityOcelot) event.entity;
 			EntityWMOcelot newOcelot = new EntityWMOcelot(event.world);
 			newOcelot.setPosition(ocelot.posX, ocelot.posY, ocelot.posZ);
-			newOcelot.setAngles(ocelot.rotationPitch, ocelot.rotationYaw);
+			newOcelot.rotationPitch = ocelot.rotationPitch;
+			newOcelot.rotationYaw = ocelot.rotationYaw;
 			newOcelot.setGrowingAge(ocelot.getGrowingAge());
 			ocelot.setDead();
 			event.setCanceled(true);
