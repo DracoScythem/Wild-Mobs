@@ -52,7 +52,7 @@ public class EntityAIBabyPanic extends EntityAIBase
 		while(iterator.hasNext())
 		{
 			EntityCreature entitycreature = (EntityCreature) iterator.next();
-			if(this.creature != entitycreature && entitycreature.getAttackTarget() == null && ((EntityAnimal) entitycreature).getAge() >= 0 && !entitycreature.isOnSameTeam(this.creature.getAITarget()) && this.creature.worldObj.rand.nextInt(2) == 0)
+			if(this.creature != entitycreature && entitycreature.getAttackTarget() == null && ((EntityAnimal) entitycreature).getAge() >= 0 && (this.creature.getAITarget() != null && !entitycreature.isOnSameTeam(this.creature.getAITarget())) && this.creature.worldObj.rand.nextInt(2) == 0)
 			{
 				entitycreature.setAttackTarget(this.creature.getAITarget());
 			}
